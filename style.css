@@ -233,7 +233,7 @@ section:nth-child(2n){
 #timeline-divider i{
 	color: #2857a4;
 	position: sticky;
-	top: 10vh;
+	top: 18vh;
 	transform: rotate(90deg);
 	margin-left: -11px;
 	margin-top: -7px;
@@ -320,7 +320,7 @@ section:nth-child(2n){
 	transform: rotate(90deg);
 	margin-left:-1rem;
 	position: sticky;
-	top:15vh; 
+	top:18vh; 
 	color: #2857a4;
 	z-index: 2;
 }
@@ -565,7 +565,10 @@ section:nth-child(2n){
 		left: -7%;
 	}
 	.timeline-boxes:nth-child(2n+1)::after{
-		left: -13.5%;
+		left: -14.5%;
+	}
+	.timeline-boxes:nth-child(2n)::after{
+		left: -14.5%;
 	}
 	.edu-timeline-boxes:nth-child(n){
 		width: 90%;
@@ -575,7 +578,7 @@ section:nth-child(2n){
 		left: 0%;
 	}
 	.edu-timeline-boxes:nth-child(n)::after{
-		left: -13.5%;
+		left: -21.5%;
 	}
 	#name-and-get-touch{
 		display: flex;
