@@ -44,7 +44,6 @@ function fillBar(bar){
 window.addEventListener('scroll',CheckScroll);
 var isAni = [false, false, false, false, false, false];
 function CheckScroll(params) {
-    console.log('scrolling!');
     for (let i = 0; i< skillBars.length ; i++) {
         let sectionLen = skillBars[i].getBoundingClientRect().y;
         if (sectionLen > window.innerHeight) {
