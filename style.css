@@ -24,11 +24,12 @@ section{
 	color: #2857a4;
 }
 #optional-nav-bar {
-	position: fixed;
-	top: 10%;
-	right: 7%;	height: auto;
+	position: relative;
+	top: 4rem;
+	left: 50%;	height: auto;
 	transition: all 0.5sec ease-in-out;
 	display: none;
+	width: 40%;
 }
 
 #optional-nav-bar ul{
@@ -48,9 +49,9 @@ section{
 	color: white;
 }
 
-#dropdown-menu:hover #optional-nav-bar{
+/* #dropdown-menu:hover #optional-nav-bar{
 	display: block;
-}
+} */
 #navigation-bar #nav{
 	visibility: visible;
 }
@@ -162,11 +163,13 @@ section:nth-child(2n){
 	height: 100%;
 	width: 50%;
 	border-radius: 4rem 0px 0px 4rem;
+	/* transition: all 1s ease-in-out; */
 }
 .eighty-percent{
 	height: 100%;
 	width: 80%;
 	border-radius: 4rem 0px 0px 4rem;
+	/* transition: all 1s ease-in-out; */
 }
 .skill-name{
 	color: white;
@@ -363,9 +366,6 @@ section:nth-child(2n){
 
 
 /*Portfolio Section*/
-#portfolio{
-	/*margin-bottom: 9rem;*/
-}
 #port-display{
 	display: flex;
 	flex-direction: row;
