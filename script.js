@@ -1,74 +1,95 @@
-var btns = document.getElementsByClassName('shortcut-btn');
-var sections = document.getElementsByClassName('section-heading');
+var btns = document.getElementsByClassName("shortcut-btn");
+var sections = document.getElementsByClassName("section-heading");
 var interval1;
 /* Smooth Scroll  */
-for (let i = 0; i < btns.length; i++) {
-    btns[i].addEventListener('click', function(event) {
-        event.preventDefault();
-        interval1 = setInterval(function () {
-            if (sections[i].getBoundingClientRect().y > 0) {
-                window.scrollBy(0,10);
-            } else {
-                clearInterval(interval1);
-                return;
-            }
-        }, 1);
-    })
-}
-
+// for (let i = 0; i < btns.length; i++) {
+//   btns[i].addEventListener("click", function (event) {
+//     event.preventDefault();
+//     interval1 = setInterval(function () {
+//       if (sections[i].getBoundingClientRect().y > 0) {
+//         window.scrollBy(0, 10);
+//       } else {
+//         clearInterval(interval1);
+//         return;
+//       }
+//     }, 1);
+//   });
+// }
 
 /* Auto Filling Bars */
 
 var skillsSection = sections[1];
-var skillBars = document.querySelectorAll('.skill-progress > div');
+var skillBars = document.querySelectorAll(".skill-progress > div");
 
 // function to initializeBars
 
 function initializeBar(bar) {
-    bar.style.width = "0%" ;
-} 
+  bar.style.width = "0%";
+}
 // function to fill bars
 
-function fillBar(bar){
-    let barWidth = bar.getAttribute('data-value');
-        let curWid = 0;
-        let fillInterval = setInterval(() => {
-            if (curWid > barWidth ) {
-                clearInterval(fillInterval);
-            } else {
-                bar.style.width = curWid + '%';
-                curWid++;
-            }
-        }, 10);
+function fillBar(bar) {
+  let barWidth = bar.getAttribute("data-value");
+  let curWid = 0;
+  let fillInterval = setInterval(() => {
+    if (curWid > barWidth) {
+      clearInterval(fillInterval);
+    } else {
+      bar.style.width = curWid + "%";
+      curWid++;
+    }
+  }, 10);
 }
-window.addEventListener('scroll',CheckScroll);
+window.addEventListener("scroll", CheckScroll);
 var isAni = [false, false, false, false, false, false];
 function CheckScroll(params) {
-    for (let i = 0; i< skillBars.length ; i++) {
-        let sectionLen = skillBars[i].getBoundingClientRect().y;
-        if (sectionLen > window.innerHeight) {
-            initializeBar(skillBars[i]);
-            isAni[i] = false;
-        } else if(!isAni[i] && sectionLen <= window.innerHeight){
-                fillBar(skillBars[i]);
-                isAni[i] = true ;
-            }
+  for (let i = 0; i < skillBars.length; i++) {
+    let sectionLen = skillBars[i].getBoundingClientRect().y;
+    if (sectionLen > window.innerHeight) {
+      initializeBar(skillBars[i]);
+      isAni[i] = false;
+    } else if (!isAni[i] && sectionLen <= window.innerHeight) {
+      fillBar(skillBars[i]);
+      isAni[i] = true;
     }
+  }
 }
 
-
-
 /* optional Nav bar */
-var hamburger = document.getElementById('hamburger');
-var optionalNavbar = document.getElementById('optional-nav-bar');
+var hamburger = document.getElementById("hamburger");
+var optionalNavbar = document.getElementById("optional-nav-bar");
 var isVisible = false;
 hamburger.onclick = function (params) {
-    if (isVisible) {
-        optionalNavbar.style.display = 'none' ;
-        isVisible = false;
-    } else {
-        optionalNavbar.style.display = 'block' ;
-        isVisible = true;
-        
-    }
-} 
+  if (isVisible) {
+    optionalNavbar.style.display = "none";
+    isVisible = false;
+  } else {
+    optionalNavbar.style.display = "block";
+    isVisible = true;
+  }
+};
+
+// email.js
+let email = document.getElementById("send-email");
+email.addEventListener("click", (event) => {
+  event.preventDefault();
+  sendEmail();
+});
+function sendEmail() {
+  //   event.preventDefault();
+  let tempParams = {
+    from_name: document.getElementById("contact-form-from").value,
+    from_email: document.getElementById("contact-form-email").value,
+    message: document.getElementById("contact-form-msg").value,
+  };
+  emailjs
+    .send(
+      "service_eupxfh8",
+      "template_gzytkpo",
+      tempParams,
+      "user_rbWTjv9Fa5Hc8sEAd6rQb"
+    )
+    .then((res) => {
+      console.log("sucessfully send message ", res.status);
+    });
+}
